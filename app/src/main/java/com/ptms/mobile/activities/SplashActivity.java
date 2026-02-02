@@ -56,6 +56,39 @@ public class SplashActivity extends AppCompatActivity {
                 // Vérifier si l'utilisateur a déjà effectué l'auth initiale
                 if (!initialAuthManager.hasInitialAuthentication()) {
                     android.util.Log.d("MainActivity", "⚠️ Authentification initiale requise - Redirection vers InitialAuthActivity");
+
+                    // ✅ FIX: Anti-loop protection - éviter les redirections infinies
+                    long lastRedirect = prefs.getLong("last_first_launch_redirect", 0);
+                    int redirectCount = prefs.getInt("first_launch_redirect_count", 0);
+                    long now = System.currentTimeMillis();
+
+                    // Réinitialiser le compteur si plus de 30 secondes depuis la dernière redirection
+                    if (now - lastRedirect > 30000) {
+                        redirectCount = 0;
+                    }
+
+                    // Si plus de 5 redirections en 30 secondes, c'est une boucle
+                    if (redirectCount > 5) {
+                        android.util.Log.e("MainActivity", "❌ BOUCLE DÉTECTÉE - Arrêt des redirections");
+                        Toast.makeText(this,
+                            "❌ Erreur de démarrage\n\n" +
+                            "L'application ne peut pas démarrer correctement.\n" +
+                            "Réinstallez l'application ou contactez le support.",
+                            Toast.LENGTH_LONG).show();
+
+                        // Réinitialiser le compteur et ne pas rediriger
+                        prefs.edit()
+                            .putInt("first_launch_redirect_count", 0)
+                            .apply();
+                        return;
+                    }
+
+                    // Sauvegarder le compteur
+                    prefs.edit()
+                        .putLong("last_first_launch_redirect", now)
+                        .putInt("first_launch_redirect_count", redirectCount + 1)
+                        .apply();
+
                     // Rediriger vers l'authentification initiale
                     startActivity(new Intent(this, FirstLaunchAuthActivity.class));
                     finish();

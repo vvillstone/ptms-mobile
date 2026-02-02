@@ -60,7 +60,14 @@
       "Bash(sudo chmod:*)",
       "Bash(/usr/bin/grep -r \"BASE_URL\" /var/www/html/hours/app/config/config.php)",
       "Bash(/usr/bin/grep:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(gh auth:*)",
+      "Bash(unzip:*)",
+      "Bash(ls:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

@@ -521,16 +521,16 @@ public class AuthenticationActivity extends AppCompatActivity {
             // Si AUCUNE authentification initiale, bloquer
             if (!hasInitialAuth && !offlineEnabled) {
                 Log.d("LOGIN", "❌ Login offline impossible - Aucune authentification initiale");
-                runOnUiThread(() -> {
-                    Toast.makeText(this,
-                        "⚠️ AUTHENTIFICATION INITIALE REQUISE\n\n" +
-                        "Vous devez vous connecter UNE FOIS en ligne pour:\n" +
-                        "• Télécharger les projets\n" +
-                        "• Télécharger les types de travail\n" +
-                        "• Activer le mode hors ligne\n\n" +
-                        "Connectez-vous à Internet et réessayez.",
-                        Toast.LENGTH_LONG).show();
-                });
+                // ✅ FIX: Ne pas utiliser runOnUiThread si déjà sur UI thread
+                // Cela évite les problèmes potentiels de threading
+                Toast.makeText(this,
+                    "⚠️ AUTHENTIFICATION INITIALE REQUISE\n\n" +
+                    "Vous devez vous connecter UNE FOIS en ligne pour:\n" +
+                    "• Télécharger les projets\n" +
+                    "• Télécharger les types de travail\n" +
+                    "• Activer le mode hors ligne\n\n" +
+                    "Connectez-vous à Internet et réessayez.",
+                    Toast.LENGTH_LONG).show();
                 return false;
             }
 

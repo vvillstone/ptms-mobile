@@ -96,30 +96,48 @@ public class FirstLaunchAuthActivity extends AppCompatActivity {
     private void performInitialAuthentication() {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
-        
+
         // Validation des champs
         if (email.isEmpty()) {
             etEmail.setError("Email requis");
             etEmail.requestFocus();
             return;
         }
-        
+
         if (password.isEmpty()) {
             etPassword.setError("Mot de passe requis");
             etPassword.requestFocus();
             return;
         }
-        
+
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             etEmail.setError("Format d'email invalide");
             etEmail.requestFocus();
             return;
         }
-        
+
+        // ✅ FIX: Vérifier la connexion réseau AVANT de tenter l'authentification
+        // Cela évite les ANR et crashes lors de tentatives offline
+        boolean isOnline = com.ptms.mobile.utils.NetworkUtils.isOnline(this);
+        if (!isOnline) {
+            tvStatus.setText("❌ Pas de connexion Internet\n\n" +
+                "L'authentification initiale nécessite une connexion Internet pour:\n" +
+                "• Valider vos identifiants\n" +
+                "• Télécharger les projets\n" +
+                "• Télécharger les types de travail\n\n" +
+                "⚠️ Connectez-vous à Internet et réessayez.");
+
+            Toast.makeText(this,
+                "❌ Connexion Internet requise\n\n" +
+                "Vous devez être connecté à Internet pour l'authentification initiale.",
+                Toast.LENGTH_LONG).show();
+            return;
+        }
+
         // Démarrer l'authentification
         setLoading(true);
         tvStatus.setText("🔄 Connexion en cours...");
-        
+
         authManager.performInitialAuthentication(email, password, new InitialAuthManager.InitialAuthCallback() {
             @Override
             public void onInitialAuthSuccess(int projectsCount, int workTypesCount) {
