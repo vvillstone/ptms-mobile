@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background_primary">
+
+    <!-- En-tête -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tests de Compatibilité des Rôles"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:drawableStart="@drawable/ic_info_outline"
+            android:drawablePadding="8dp" />
+
+        <Button
+            android:id="@+id/clear_results_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Effacer"
+            android:textSize="12sp"
+            android:backgroundTint="@color/button_secondary"
+            android:textColor="@color/text_on_button_secondary" />
+
+    </LinearLayout>
+
+    <!-- Zone de résultats -->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/test_results_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:textColor="@color/text_primary"
+            android:lineSpacingExtra="2dp"
+            android:textIsSelectable="true" />
+
+    </ScrollView>
+
+    <!-- Boutons d'action -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="16dp">
+
+        <Button
+            android:id="@+id/run_tests_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Lancer les tests"
+            android:backgroundTint="@color/button_primary"
+            android:textColor="@color/text_on_button_primary"
+            android:textStyle="bold"
+            android:drawableStart="@drawable/ic_check"
+            android:drawablePadding="8dp" />
+
+    </LinearLayout>
+
+    <!-- Informations -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ℹ️ Informations"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Ces tests vérifient la compatibilité de l'application Android avec la nouvelle gestion des rôles PTMS\n• Assurez-vous d'être connecté avant de lancer les tests\n• Les résultats sont automatiquement sauvegardés"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:lineSpacingExtra="2dp"
+            android:paddingTop="4dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

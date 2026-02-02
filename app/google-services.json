@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "123456789000",
+    "project_id": "ptms-mobile-demo",
+    "storage_bucket": "ptms-mobile-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123456789000:android:abcdef1234567890",
+        "android_client_info": {
+          "package_name": "com.ptms.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123456789000-abc123def456.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDemoKey123456789_REPLACE_ME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123456789000-abc123def456.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123456789000:android:abcdef1234567891",
+        "android_client_info": {
+          "package_name": "com.ptms.mobile.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123456789000-abc123def456.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDemoKey123456789_REPLACE_ME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123456789000-abc123def456.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

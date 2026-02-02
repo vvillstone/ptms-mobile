@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <!-- Indicateur de connexion en haut -->
+    <LinearLayout
+        android:id="@+id/connection_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:background="#9E9E9E">
+
+        <ProgressBar
+            android:id="@+id/progress_indicator"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:indeterminate="true"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_connection_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Vérification de la connexion..."
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp" />
+
+        <Button
+            android:id="@+id/btn_retry_ping"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Réessayer"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
+    </LinearLayout>
+
+    <!-- Contenu central -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/connection_indicator"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <!-- Logo ou titre de l'application -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PTMS"
+            android:textSize="54sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Project Time Management System"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="16dp"
+            android:gravity="center" />
+
+        <!-- Version info -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Version 2.0 - Mode Offline"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="48dp"
+            android:gravity="center" />
+
+    <!-- Bouton de connexion -->
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Se connecter"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_primary"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Bouton de test/réinitialisation -->
+    <Button
+        android:id="@+id/btn_reset_settings"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Réinitialiser les paramètres"
+        android:textSize="14sp"
+        android:textColor="@color/primary"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="16dp" />
+
+        <!-- Informations sur le serveur -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Application mobile pour la saisie des heures de travail"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:layout_marginTop="32dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

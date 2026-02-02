@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FF9800"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🛠️ MODE DÉVELOPPEUR"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Liste de toutes les activités de l'app\nCliquez pour lancer directement"
+            android:textSize="13sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Liste des activités -->
+    <ListView
+        android:id="@+id/listActivities"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#CCCCCC"
+        android:dividerHeight="1dp"
+        android:padding="8dp" />
+
+</LinearLayout>

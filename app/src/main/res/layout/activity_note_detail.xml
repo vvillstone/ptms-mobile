@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Toolbar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Card Content -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Type Icon -->
+                    <TextView
+                        android:id="@+id/tv_note_type_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📝"
+                        android:textSize="32sp"
+                        android:layout_marginEnd="12dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <!-- Title -->
+                        <TextView
+                            android:id="@+id/tv_note_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Titre de la note"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="#000" />
+
+                        <!-- Type Label -->
+                        <TextView
+                            android:id="@+id/tv_note_type_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Note de texte"
+                            android:textSize="12sp"
+                            android:textColor="#666"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                    <!-- Important Star -->
+                    <TextView
+                        android:id="@+id/tv_important"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⭐"
+                        android:textSize="24sp"
+                        android:visibility="gone"
+                        android:layout_marginStart="8dp" />
+
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Project Info (if exists) -->
+                <LinearLayout
+                    android:id="@+id/layout_project_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📁 Projet: "
+                        android:textSize="14sp"
+                        android:textColor="#666" />
+
+                    <TextView
+                        android:id="@+id/tv_project_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nom du projet"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Category Info -->
+                <LinearLayout
+                    android:id="@+id/layout_category_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🏷️ Catégorie: "
+                        android:textSize="14sp"
+                        android:textColor="#666" />
+
+                    <TextView
+                        android:id="@+id/tv_category"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Catégorie"
+                        android:textSize="14sp"
+                        android:textColor="#000" />
+
+                </LinearLayout>
+
+                <!-- Tags (if exists) -->
+                <LinearLayout
+                    android:id="@+id/layout_tags"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔖 Tags: "
+                        android:textSize="14sp"
+                        android:textColor="#666" />
+
+                    <TextView
+                        android:id="@+id/tv_tags"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="tag1, tag2"
+                        android:textSize="14sp"
+                        android:textColor="#2196F3" />
+
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:id="@+id/divider_before_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginBottom="12dp"
+                    android:visibility="gone" />
+
+                <!-- Audio Player (for audio/dictation notes) -->
+                <LinearLayout
+                    android:id="@+id/layout_audio_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    android:background="#F0F0F0">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎵 Audio"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_marginBottom="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Play/Pause Button -->
+                        <Button
+                            android:id="@+id/btn_play_audio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="▶️ Écouter"
+                            android:textSize="14sp" />
+
+                        <!-- Duration -->
+                        <TextView
+                            android:id="@+id/tv_audio_duration"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Durée: 00:00"
+                            android:textSize="12sp"
+                            android:textColor="#666"
+                            android:gravity="end"
+                            android:layout_marginEnd="8dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Content -->
+                <TextView
+                    android:id="@+id/tv_note_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contenu de la note..."
+                    android:textSize="16sp"
+                    android:textColor="#000"
+                    android:lineSpacingMultiplier="1.3"
+                    android:layout_marginBottom="16dp"
+                    android:scrollbars="vertical" />
+
+                <!-- Image (if exists) -->
+                <ImageView
+                    android:id="@+id/img_note_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="Image de la note"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone" />
+
+                <!-- Video Player (for video notes) -->
+                <LinearLayout
+                    android:id="@+id/layout_video_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    android:background="#F0F0F0">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎬 Vidéo"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- VideoView -->
+                    <VideoView
+                        android:id="@+id/video_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@android:color/black" />
+
+                    <!-- Video Controls -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Play/Pause Button -->
+                        <Button
+                            android:id="@+id/btn_play_video"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="▶️ Lecture"
+                            android:textSize="14sp" />
+
+                        <!-- Video Duration -->
+                        <TextView
+                            android:id="@+id/tv_video_duration"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Durée: 00:00"
+                            android:textSize="12sp"
+                            android:textColor="#666"
+                            android:gravity="end"
+                            android:layout_marginEnd="8dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Footer -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Author -->
+                    <TextView
+                        android:id="@+id/tv_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="👤 Auteur: John Doe"
+                        android:textSize="13sp"
+                        android:textColor="#666"
+                        android:layout_marginBottom="4dp" />
+
+                    <!-- Created Date -->
+                    <TextView
+                        android:id="@+id/tv_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📅 Créé le: 15/10/2025 10:30"
+                        android:textSize="13sp"
+                        android:textColor="#666"
+                        android:layout_marginBottom="4dp" />
+
+                    <!-- Updated Date (if exists) -->
+                    <TextView
+                        android:id="@+id/tv_updated_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔄 Modifié le: 15/10/2025 11:00"
+                        android:textSize="13sp"
+                        android:textColor="#666"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center">
+
+            <!-- Edit Button -->
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="✏️ Éditer"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.AppCompat.Button.Colored" />
+
+            <!-- Delete Button -->
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🗑️ Supprimer"
+                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#F44336"
+                style="@style/Widget.AppCompat.Button.Colored" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

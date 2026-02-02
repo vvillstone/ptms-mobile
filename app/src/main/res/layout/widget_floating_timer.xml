@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardTimer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:minWidth="200dp">
+
+        <!-- Header avec indicateur de pulsation -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <!-- Indicateur de pulsation -->
+            <View
+                android:id="@+id/pulseIndicator"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_pulse_indicator" />
+
+            <!-- Nom du projet -->
+            <TextView
+                android:id="@+id/textProject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/buttonExpand"
+                android:layout_toEndOf="@id/pulseIndicator"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                android:text="Projet"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- Bouton expand/collapse -->
+            <ImageButton
+                android:id="@+id/buttonExpand"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_expand"
+                android:tint="@color/white"
+                android:contentDescription="Expand" />
+        </RelativeLayout>
+
+        <!-- Temps écoulé (grand affichage) -->
+        <TextView
+            android:id="@+id/textTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:fontFamily="monospace"
+            android:layout_marginVertical="8dp" />
+
+        <!-- Boutons d'action -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="4dp">
+
+            <!-- Bouton Play/Pause -->
+            <ImageButton
+                android:id="@+id/buttonPlayPause"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_timer_button"
+                android:src="@drawable/ic_pause"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="Play/Pause"
+                android:layout_marginEnd="12dp" />
+
+            <!-- Bouton Stop -->
+            <ImageButton
+                android:id="@+id/buttonStop"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_timer_button_danger"
+                android:src="@drawable/ic_stop"
+                android:tint="@color/white"
+                android:contentDescription="Stop" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="@color/colorPrimary">
+
+    <!-- Icône de chargement -->
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="32dp"
+        android:indeterminateTint="@android:color/white"/>
+
+    <!-- Titre -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Préparation de vos données"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Message de statut -->
+    <TextView
+        android:id="@+id/tv_loading_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chargement du profil..."
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"/>
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Pourcentage -->
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- Mode offline indicator -->
+    <TextView
+        android:id="@+id/tv_offline_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📡 Mode hors ligne"
+        android:textSize="14sp"
+        android:textColor="#FFC107"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Bouton réessayer (caché par défaut) -->
+    <Button
+        android:id="@+id/btn_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Réessayer"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Bouton continuer en mode offline (caché par défaut) -->
+    <Button
+        android:id="@+id/btn_continue_offline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continuer hors ligne"
+        android:visibility="gone"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>

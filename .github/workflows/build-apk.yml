@@ -1,0 +1,141 @@
+name: Build Android APK
+
+on:
+  # Déclencher sur push vers main/master
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'app/**'
+      - 'build.gradle'
+      - 'settings.gradle'
+      - '.github/workflows/build-apk.yml'
+
+  # Déclencher sur pull request
+  pull_request:
+    branches: [ main, master ]
+
+  # Permettre le déclenchement manuel
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Type de build'
+        required: true
+        default: 'debug'
+        type: choice
+        options:
+          - debug
+          - release
+
+env:
+  JAVA_VERSION: '17'
+  ANDROID_COMPILE_SDK: '34'
+  ANDROID_BUILD_TOOLS: '34.0.0'
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Build Debug APK
+        if: ${{ github.event.inputs.build_type != 'release' }}
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Build Release APK
+        if: ${{ github.event.inputs.build_type == 'release' }}
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Get APK info
+        id: apk-info
+        run: |
+          APK_PATH=$(find app/build/outputs/apk -name "*.apk" | head -1)
+          APK_NAME=$(basename "$APK_PATH")
+          echo "apk_path=$APK_PATH" >> $GITHUB_OUTPUT
+          echo "apk_name=$APK_NAME" >> $GITHUB_OUTPUT
+          echo "📦 APK généré: $APK_NAME"
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PTMS-Mobile-APK
+          path: app/build/outputs/apk/**/*.apk
+          retention-days: 30
+
+      - name: Create Release (on tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: app/build/outputs/apk/**/*.apk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Job optionnel: déployer l'APK sur le serveur
+  deploy:
+    name: Deploy to Server
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Download APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: PTMS-Mobile-APK
+          path: ./apk
+
+      - name: Find APK file
+        id: find-apk
+        run: |
+          APK_FILE=$(find ./apk -name "*.apk" | head -1)
+          echo "apk_file=$APK_FILE" >> $GITHUB_OUTPUT
+          echo "📦 APK à déployer: $APK_FILE"
+
+      - name: Deploy to Server via SCP
+        if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: "${{ steps.find-apk.outputs.apk_file }}"
+          target: "/var/www/html/hours/uploads/apk/"
+          strip_components: 2
+
+      - name: Summary
+        run: |
+          echo "## 🎉 Build terminé avec succès!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 APK généré" >> $GITHUB_STEP_SUMMARY
+          echo "L'APK est disponible dans les artifacts du workflow." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📥 Téléchargement" >> $GITHUB_STEP_SUMMARY
+          echo "1. Allez dans l'onglet **Actions** de ce dépôt" >> $GITHUB_STEP_SUMMARY
+          echo "2. Cliquez sur ce workflow run" >> $GITHUB_STEP_SUMMARY
+          echo "3. Téléchargez l'artifact **PTMS-Mobile-APK**" >> $GITHUB_STEP_SUMMARY

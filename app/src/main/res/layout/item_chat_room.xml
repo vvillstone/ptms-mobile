@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Avatar de la salle -->
+    <LinearLayout
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/avatar_background"
+        android:gravity="center"
+        android:layout_marginEnd="12dp">
+
+        <TextView
+            android:id="@+id/tv_room_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <!-- Contenu principal -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Nom de la salle et badge non lu -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_room_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nom de la salle"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/tv_unread_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/badge_background"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:minWidth="20dp"
+                android:gravity="center"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Dernier message -->
+        <TextView
+            android:id="@+id/tv_last_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dernier message de la conversation..."
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="2dp" />
+
+        <!-- Heure et statut -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_last_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="14:30"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+
+            <ImageView
+                android:id="@+id/iv_message_status"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_check"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Indicateur de type de salle -->
+    <ImageView
+        android:id="@+id/iv_room_type"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_group"
+        android:alpha="0.6"
+        android:layout_marginStart="8dp" />
+
+</LinearLayout>

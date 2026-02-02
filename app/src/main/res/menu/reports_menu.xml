@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Bouton de synchronisation unifié -->
+    <item
+        android:id="@+id/action_sync_files"
+        android:icon="@drawable/ic_sync"
+        android:title="Synchronisation"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_open_agenda"
+        android:title="Agenda"
+        android:icon="@drawable/ic_calendar"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_reconcile_reports"
+        android:title="Télécharger manquants"
+        android:icon="@drawable/ic_refresh"
+        app:showAsAction="never" />
+
+</menu>

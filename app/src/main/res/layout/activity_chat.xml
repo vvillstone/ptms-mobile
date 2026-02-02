@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_light">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="@string/chat"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_arrow_back_white" />
+
+    <!-- Header avec informations de la salle -->
+    <LinearLayout
+        android:id="@+id/chat_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="@color/background_white"
+        android:elevation="2dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_room_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom de la salle"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/tv_room_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="En ligne"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btn_room_info"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_info_outline"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:contentDescription="@string/chat_room_info" />
+
+    </LinearLayout>
+
+    <!-- Messages -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_messages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <!-- Indicateur de frappe -->
+    <LinearLayout
+        android:id="@+id/typing_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/background_light"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_typing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chat_typing"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <!-- Zone de saisie -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/background_white"
+        android:elevation="4dp">
+
+        <ImageButton
+            android:id="@+id/btn_attach"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_attach_file"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/chat_attachment" />
+
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="8dp"
+            android:hint="@string/chat_type_message"
+            android:maxLines="4"
+            android:inputType="textCapSentences|textMultiLine"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp" />
+
+        <ImageButton
+            android:id="@+id/btn_send"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_send"
+            android:background="@drawable/button_send_background"
+            android:contentDescription="@string/chat_send" />
+
+    </LinearLayout>
+
+    <!-- Progress bar pour l'envoi -->
+    <ProgressBar
+        android:id="@+id/progress_sending"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleHorizontal" />
+
+</LinearLayout>

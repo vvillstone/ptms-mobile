@@ -1,0 +1,177 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.ptms.mobile'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.ptms.mobile"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "2.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Informations pour le nom du fichier APK
+        setProperty("archivesBaseName", "PTMS-Mobile")
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/main/java']
+                include '**/*.java'
+            }
+        }
+    }
+
+    signingConfigs {
+        release {
+            if (project.hasProperty('RELEASE_STORE_FILE')) {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Utiliser signingConfig debug pour les tests (pas de keystore release configuré)
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            // Nom personnalisé pour le debug APK
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+    }
+
+    // Configuration du nom de sortie des APK
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def appName = "PTMS-Mobile"
+            def versionName = variant.versionName
+            def buildType = variant.buildType.name
+            def date = new Date().format('yyyyMMdd-HHmm')
+
+            // Format: PTMS-Mobile-v1.0-debug-20250113-1630.apk
+            def fileName = "${appName}-v${versionName}-${buildType}-${date}.apk"
+            outputFileName = fileName
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    
+    buildFeatures {
+        viewBinding true
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.0'
+    
+    // Networking
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.11.0'
+    implementation 'com.android.volley:volley:1.2.1'
+    
+    // JSON Web Token
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+    // WebSocket
+    implementation 'org.java-websocket:Java-WebSocket:1.5.3'
+
+    // WorkManager for background tasks (Phase 2 Offline-First)
+    implementation 'androidx.work:work-runtime:2.8.1'
+
+    // SwipeRefreshLayout for pull-to-refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    // Date/Time picker
+    implementation 'com.google.android.material:material:1.9.0'
+
+    // PhotoView for zoomable images
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.10.3'
+    testImplementation 'org.mockito:mockito-core:5.3.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // In-App Updates (Play Core)
+    implementation 'com.google.android.play:app-update:2.1.0'
+    implementation 'com.google.android.play:app-update-ktx:2.1.0'
+
+    // Firebase - Cloud Messaging (Notifications Push)
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
+}
+
+// Tâche pour copier l'APK vers un répertoire personnalisé
+android.applicationVariants.all { variant ->
+    variant.assembleProvider.get().doLast {
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                // Définir le répertoire de destination: C:\Devs\web\uploads\apk
+                def destDir = new File("C:/Devs/web/uploads/apk")
+                if (!destDir.exists()) {
+                    destDir.mkdirs()
+                }
+
+                // Copier l'APK vers le répertoire de destination
+                def destFile = new File(destDir, outputFile.name)
+                copy {
+                    from outputFile
+                    into destDir
+                }
+
+                println ""
+                println "╔═══════════════════════════════════════════════════════════════╗"
+                println "║  ✅ APK GÉNÉRÉ AVEC SUCCÈS                                    ║"
+                println "╠═══════════════════════════════════════════════════════════════╣"
+                println "║  📦 Fichier: ${outputFile.name.padRight(45)} ║"
+                println "║  📂 Destination: C:/Devs/web/uploads/apk                     ║"
+                println "║  📍 Chemin complet:                                           ║"
+                println "║     ${destFile.absolutePath.take(60).padRight(60)} ║"
+                println "╚═══════════════════════════════════════════════════════════════╝"
+                println ""
+            }
+        }
+    }
+}
+

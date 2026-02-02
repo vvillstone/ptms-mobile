@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Message de l'utilisateur (à droite) -->
+    <LinearLayout
+        android:id="@+id/layout_message_sent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/message_sent_background"
+                android:padding="12dp"
+                android:maxWidth="280dp">
+
+                <TextView
+                    android:id="@+id/tv_message_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Message envoyé"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/tv_time_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="14:30"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:alpha="0.7"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/avatar_background_small"
+            android:gravity="center"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/tv_avatar_sent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Message reçu (à gauche) -->
+    <LinearLayout
+        android:id="@+id/layout_message_received"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/avatar_background_small"
+            android:gravity="center"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/tv_avatar_received"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_sender_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom de l'expéditeur"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginBottom="2dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/message_received_background"
+                android:padding="12dp"
+                android:maxWidth="280dp">
+
+                <TextView
+                    android:id="@+id/tv_message_received"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Message reçu"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/tv_time_received"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="14:30"
+                    android:textSize="10sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Message système (centré) -->
+    <LinearLayout
+        android:id="@+id/layout_message_system"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_message_system"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message système"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:textStyle="italic"
+            android:background="@drawable/message_system_background"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

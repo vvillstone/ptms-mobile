@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paramètres de l'application"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:layout_marginBottom="32dp"
+        android:gravity="center" />
+
+    <!-- Configuration du serveur -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="URL du serveur"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/et_server_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="192.168.188.28"
+        android:text="192.168.188.28"
+        android:inputType="text"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Entrez juste l'IP ou le domaine. Le protocole (https://) et le chemin (/api/) seront ajoutés automatiquement."
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:layout_marginBottom="8dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp" />
+
+    <TextView
+        android:id="@+id/tv_full_url_preview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="URL complète: https://192.168.188.28/api/"
+        android:textSize="11sp"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp" />
+
+    <!-- Ignorer SSL -->
+    <CheckBox
+        android:id="@+id/cb_ignore_ssl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ignorer les certificats SSL"
+        android:textColor="@color/text_secondary"
+        android:checked="true"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Timeout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Timeout (secondes)"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <SeekBar
+            android:id="@+id/sb_timeout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="120"
+            android:min="5"
+            android:progress="30" />
+
+        <TextView
+            android:id="@+id/tv_timeout_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30 sec"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:minWidth="60dp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <!-- Mode debug -->
+    <CheckBox
+        android:id="@+id/cb_debug_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mode débogage"
+        android:textColor="@color/text_secondary"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Mode Développeur -->
+    <Button
+        android:id="@+id/btn_dev_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🛠️ MODE DÉVELOPPEUR"
+        android:backgroundTint="#FF9800"
+        android:textColor="@color/white"
+        android:layout_marginBottom="24dp"
+        style="@style/Widget.Material3.Button" />
+
+    <!-- Section Chat -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paramètres du Chat"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Activer/Désactiver le Chat -->
+    <CheckBox
+        android:id="@+id/cb_enable_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="💬 Activer le Chat"
+        android:textColor="@color/text_secondary"
+        android:textStyle="bold"
+        android:checked="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Désactiver le chat pour économiser la batterie et les données. En mode désactivé, vous pouvez toujours lire les anciens messages mais pas envoyer de nouveaux messages ni recevoir de notifications."
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:paddingStart="32dp"
+        android:paddingEnd="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Polling automatique du chat -->
+    <CheckBox
+        android:id="@+id/cb_enable_chat_polling"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Activer le rafraîchissement automatique"
+        android:textColor="@color/text_secondary"
+        android:checked="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rafraîchit les messages toutes les 5 secondes. Désactiver cette option économise la batterie mais nécessite un rafraîchissement manuel."
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:paddingStart="32dp"
+        android:paddingEnd="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Version du Chat -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Version du Chat"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rg_chat_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <RadioButton
+            android:id="@+id/rb_chat_v1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Version 1 - Polling HTTP (Par défaut)"
+            android:textColor="@color/text_secondary"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rb_chat_v2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Version 2 - WebSocket Temps Réel (Expérimental)"
+            android:textColor="@color/text_secondary" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="V1: Rafraîchissement périodique des messages (économise la batterie)\nV2: Messages instantanés via WebSocket (nécessite serveur WebSocket configuré)"
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:paddingStart="32dp"
+        android:paddingEnd="8dp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Boutons -->
+    <Button
+        android:id="@+id/btn_diagnostic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🔧 Page de Diagnostique Complète"
+        android:background="@drawable/button_primary"
+        android:textColor="@color/white"
+        android:layout_marginBottom="16dp"
+        android:padding="14dp" />
+
+    <Button
+        android:id="@+id/btn_test_connection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tester la connexion"
+        android:background="@drawable/button_secondary"
+        android:textColor="@color/white"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btn_test_base_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tester l'URL de base"
+        android:background="@drawable/button_secondary"
+        android:textColor="@color/white"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_reset_settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Réinitialiser"
+            android:background="@drawable/button_secondary"
+            android:textColor="@color/white"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btn_save_settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sauvegarder"
+            android:background="@drawable/button_primary"
+            android:textColor="@color/white"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>

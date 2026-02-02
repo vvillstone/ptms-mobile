@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Titre -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enregistrer un message vocal"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Panneau d'enregistrement -->
+    <LinearLayout
+        android:id="@+id/audio_recording_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="@android:color/holo_red_light"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎤 Enregistrement en cours..."
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_recording_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- Panneau de prévisualisation -->
+    <LinearLayout
+        android:id="@+id/audio_preview_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="@android:color/holo_green_light"
+        android:visibility="gone"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✅ Audio enregistré"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_audio_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- Boutons de contrôle -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btn_start_recording"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🎤 Démarrer"
+            android:backgroundTint="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/btn_stop_recording"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⏹️ Arrêter"
+            android:enabled="false"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@android:color/holo_green_dark" />
+
+        <Button
+            android:id="@+id/btn_cancel_recording"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="❌ Annuler"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@android:color/darker_gray" />
+
+    </LinearLayout>
+
+    <!-- Boutons de prévisualisation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btn_play_audio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="▶️ Écouter" />
+
+        <Button
+            android:id="@+id/btn_delete_audio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🗑️ Supprimer"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@android:color/holo_red_light" />
+
+    </LinearLayout>
+
+    <!-- Bouton d'envoi -->
+    <Button
+        android:id="@+id/btn_send_audio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📤 Envoyer le message vocal"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+</LinearLayout>

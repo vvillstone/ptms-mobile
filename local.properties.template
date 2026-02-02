@@ -1,0 +1,17 @@
+## Template pour local.properties
+# Copier ce fichier vers local.properties et ajuster les valeurs
+
+sdk.dir=C:/Program Files (x86)/Android/android-sdk
+
+## Signing Configuration (GARDER PRIVÉ - NE PAS COMMITTER)
+# Chemins absolus vers le keystore
+RELEASE_STORE_FILE=/chemin/vers/votre/keystore.jks
+RELEASE_STORE_PASSWORD=votre_mot_de_passe_store
+RELEASE_KEY_ALIAS=votre_alias
+RELEASE_KEY_PASSWORD=votre_mot_de_passe_key
+
+## Instructions:
+# 1. Copier ce fichier: cp local.properties.template local.properties
+# 2. Éditer local.properties avec vos vraies credentials
+# 3. Vérifier que local.properties est dans .gitignore
+# 4. NE JAMAIS committer local.properties

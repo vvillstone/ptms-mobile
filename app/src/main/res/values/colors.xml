@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Couleurs principales -->
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="primary_light">#BBDEFB</color>
+    <color name="accent">#FF4081</color>
+    
+    <!-- Couleurs de texte -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#BDBDBD</color>
+    
+    <!-- Couleurs de fond -->
+    <color name="background_light">#FAFAFA</color>
+    <color name="background_dark">#303030</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="divider">#E0E0E0</color>
+    
+    <!-- Couleurs de statut -->
+    <color name="status_approved">#4CAF50</color>
+    <color name="status_pending">#FF9800</color>
+    <color name="status_rejected">#F44336</color>
+    
+    <!-- Couleurs système -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Couleurs pour la fonctionnalité hors ligne -->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="connection_online">#4CAF50</color>
+    <color name="connection_offline">#FF5722</color>
+    <color name="sync_pending">#FF9800</color>
+    <color name="sync_success">#4CAF50</color>
+    <color name="sync_error">#F44336</color>
+    
+    <!-- Couleurs pour les statuts de synchronisation JSON -->
+    <color name="sync_pending_light">#FFF3E0</color>
+    <color name="sync_success_light">#E8F5E8</color>
+    <color name="sync_error_light">#FFEBEE</color>
+    
+    <!-- Couleurs pour les tests de rôles -->
+    <color name="warning">#FF9800</color>
+    <color name="warning_light">#FFF3E0</color>
+    <color name="button_warning">#FF9800</color>
+    <color name="button_secondary">#757575</color>
+    <color name="text_on_button_secondary">#FFFFFF</color>
+    <color name="background_primary">#FAFAFA</color>
+    <color name="button_primary">#2196F3</color>
+    <color name="text_on_button_primary">#FFFFFF</color>
+
+    <!-- Couleurs pour les cartes et badges -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="hours_calculated_good">#4CAF50</color>
+    <color name="hours_calculated_warning">#FF9800</color>
+    <color name="hours_calculated_error">#F44336</color>
+
+    <!-- Couleurs pour le timer widget -->
+    <color name="white_transparent_25">#40FFFFFF</color>
+    <color name="danger_transparent">#40F44336</color>
+    <color name="success">#4CAF50</color>
+    <color name="danger">#F44336</color>
+    <color name="error">#F44336</color>
+
+    <!-- Aliases pour compatibilité camelCase -->
+    <color name="background">@color/background_light</color>
+    <color name="backgroundLight">@color/background_light</color>
+    <color name="textPrimary">@color/text_primary</color>
+    <color name="textSecondary">@color/text_secondary</color>
+    <color name="chipBackground">#E3F2FD</color>
+</resources>

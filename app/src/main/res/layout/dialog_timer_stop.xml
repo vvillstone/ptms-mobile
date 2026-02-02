@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Type de travail -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type de travail"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinner_work_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:background="@android:drawable/spinner_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Description -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description du travail effectué"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/et_description"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:hint="Décrivez le travail effectué..."
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:background="@android:drawable/edit_text"
+        android:padding="12dp"
+        android:textSize="14sp"
+        android:maxLength="500"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Un rapport de temps sera créé avec ces informations"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="12dp"/>
+
+</LinearLayout>

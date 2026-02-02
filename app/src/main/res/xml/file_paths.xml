@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+        Configuration FileProvider pour le partage sécurisé des photos
+        Utilisé par PhotoManager pour partager les photos avec l'app caméra
+    -->
+
+    <!-- Répertoire interne de l'app pour les photos -->
+    <files-path
+        name="photos"
+        path="photos/" />
+
+    <!-- Cache interne pour les photos temporaires -->
+    <cache-path
+        name="photo_cache"
+        path="photos/" />
+
+    <!-- Stockage externe de l'app (si disponible) -->
+    <external-files-path
+        name="external_photos"
+        path="Photos/" />
+
+    <!-- Cache externe pour les photos temporaires -->
+    <external-cache-path
+        name="external_photo_cache"
+        path="photos/" />
+</paths>

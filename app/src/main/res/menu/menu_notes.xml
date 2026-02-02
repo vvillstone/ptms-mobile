@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_calendar"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="Calendrier"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:title="Rafraîchir"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Rechercher"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_open_agenda"
+        android:title="Agenda"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_diagnostic"
+        android:title="Diagnostique"
+        android:icon="@android:drawable/ic_menu_info_details"
+        app:showAsAction="never" />
+
+</menu>

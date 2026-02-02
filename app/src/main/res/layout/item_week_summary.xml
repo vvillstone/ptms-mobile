@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sub-item pour afficher un résumé hebdomadaire dans un mois -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Numéro de semaine + Dates -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_week_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semaine 42"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/tv_week_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="16/10 - 22/10"
+            android:textSize="11sp"
+            android:textColor="@color/text_secondary" />
+
+    </LinearLayout>
+
+    <!-- Barre de progression (heures de la semaine) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="8dp">
+
+        <ProgressBar
+            android:id="@+id/progress_week"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:max="40"
+            android:progress="35" />
+
+        <TextView
+            android:id="@+id/tv_week_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="35/40h"
+            android:textSize="10sp"
+            android:textColor="@color/text_secondary"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <!-- Heures totales -->
+    <TextView
+        android:id="@+id/tv_week_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="35.00h"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:layout_gravity="center_vertical" />
+
+</LinearLayout>

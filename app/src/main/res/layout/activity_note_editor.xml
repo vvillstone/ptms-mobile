@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <!-- ===== SECTION: Type de note ===== -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📋 Type de note"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Utiliser une grille au lieu d'un RadioGroup pour le layout en 2 lignes -->
+                <!-- mais garder le comportement exclusif avec le code Java -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Première ligne -->
+                    <RadioGroup
+                        android:id="@+id/radioGroupNoteType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="📝 Texte"
+                            android:textSize="14sp"
+                            android:checked="true" />
+
+                        <RadioButton
+                            android:id="@+id/radioDictation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🎤 Dictée"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/radioAudio"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🔊 Audio"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/radioVideo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🎥 Vidéo"
+                            android:textSize="14sp" />
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== CHAMPS COMMUNS ===== -->
+
+        <!-- Titre -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Titre de la note"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Projet (optionnel) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Projet (optionnel)"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinnerProject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Catégorie de note -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Catégorie"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinnerNoteGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:text="Projet" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ===== SECTION TEXTE (mode text) ===== -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#E8F5E9"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="✍️ Écrivez votre note"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#2E7D32"
+                    android:layout_marginBottom="12dp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contenu de la note"
+                    android:inputType="textMultiLine"
+                    android:minLines="6"
+                    android:maxLines="12"
+                    android:gravity="top"
+                    android:background="#FFFFFF"
+                    android:padding="12dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== SECTION DICTÉE (mode dictation) ===== -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardDictationInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#E3F2FD"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🎤 Dictez votre note"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#1976D2"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp" />
+
+                <Button
+                    android:id="@+id/btnStartDictation"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center"
+                    android:text="🎤"
+                    android:textSize="56sp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:id="@+id/tvDictationStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Prêt à dicter"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:textColor="#1976D2"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editDictationContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Le texte dicté apparaîtra ici..."
+                    android:inputType="textMultiLine"
+                    android:minLines="6"
+                    android:maxLines="12"
+                    android:gravity="top"
+                    android:background="#FFFFFF"
+                    android:padding="12dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== SECTION AUDIO (mode audio) ===== -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAudioInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#FFF3E0"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🔊 Enregistrez une note vocale"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#FF9800"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Boutons d'enregistrement -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp">
+
+                    <Button
+                        android:id="@+id/btnStartRecording"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:text="⏺"
+                        android:textSize="44sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button
+                        android:id="@+id/btnStopRecording"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:text="⏹"
+                        android:textSize="44sp"
+                        android:enabled="false"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlayAudio"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:text="▶️"
+                        android:textSize="44sp"
+                        android:enabled="false"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvRecordingStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Prêt à enregistrer"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:textColor="#FF9800"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvRecordingDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#FF9800"
+                    android:gravity="center" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== SECTION VIDÉO (mode video) ===== -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardVideoInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#F3E5F5"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🎥 Enregistrez une vidéo"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#9C27B0"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Boutons d'enregistrement vidéo -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp">
+
+                    <Button
+                        android:id="@+id/btnRecordVideo"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:text="🎬"
+                        android:textSize="56sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button
+                        android:id="@+id/btnSelectVideo"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:text="🎞️"
+                        android:textSize="56sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvVideoStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enregistrer ou sélectionner une vidéo"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:textColor="#9C27B0"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Miniature de la vidéo -->
+                <ImageView
+                    android:id="@+id/imgVideoThumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:background="#424242"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/tvVideoDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#9C27B0"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== OPTIONS ADDITIONNELLES ===== -->
+
+        <!-- Important -->
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkImportant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⭐ Marquer comme importante"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tags -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Tags (séparés par des virgules)"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <AutoCompleteTextView
+                android:id="@+id/editTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Section Images -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📸 Images"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btn_camera"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📷 Caméra"
+                android:layout_marginEnd="8dp"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/btn_gallery"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🖼️ Galerie"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+        <!-- Aperçu image -->
+        <ImageView
+            android:id="@+id/img_preview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="Aperçu de l'image"
+            android:visibility="gone"/>
+
+        <!-- Bouton sauvegarder -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="💾 ENREGISTRER LA NOTE"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.Button"
+            android:elevation="4dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

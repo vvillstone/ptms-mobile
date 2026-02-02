@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Icon container -->
+    <LinearLayout
+        android:id="@+id/icon_container"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_icon_circle"
+        android:gravity="center"
+        android:orientation="vertical" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tv_stat_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Statistique"
+        android:textColor="@color/textSecondary"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <!-- Value -->
+    <TextView
+        android:id="@+id/tv_stat_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="0h 00min"
+        android:textColor="@color/textPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/tv_stat_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Sous-titre"
+        android:textColor="@color/textSecondary"
+        android:textSize="11sp"
+        android:visibility="gone" />
+
+</LinearLayout>

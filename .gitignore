@@ -1,0 +1,52 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.apk
+*.ap_
+*.aab
+
+# Signing files
+*.jks
+*.keystore
+
+# Local configuration files (including signing credentials)
+local.properties
+
+# Backup files
+*.backup
+*.sync_backup
+*.sed_backup
+*.old
+*.bak
+
+# Build output
+/app/build
+/app/release
+/uploads/apk/*.apk
+
+# Logs
+*.log
+debug.log
+ptms_debug.txt
+
+# Android Studio
+.idea/
+*.iml
+.gradle/
+build/
+
+# Sensitive data
+credentials.properties
+keystore.properties
+secrets.properties

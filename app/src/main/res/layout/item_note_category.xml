@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/categoryCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Indicateur de couleur -->
+        <View
+            android:id="@+id/categoryColorIndicator"
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- Emoji -->
+        <TextView
+            android:id="@+id/categoryEmoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📁"
+            android:textSize="24sp"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- Informations -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/categoryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/categorySlug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="slug"
+                android:textSize="12sp"
+                android:textColor="#888888"/>
+
+        </LinearLayout>
+
+        <!-- Bouton supprimer -->
+        <Button
+            android:id="@+id/btnDeleteCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🗑️"
+            android:backgroundTint="#dc3545"
+            android:textColor="@android:color/white"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

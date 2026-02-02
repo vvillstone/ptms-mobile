@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Permissions caméra et photos -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PTMSMobile"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PTMSMobile">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".activities.AuthenticationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+
+        <activity
+            android:name=".activities.AppLoadingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Chargement..." />
+
+        <activity
+            android:name=".activities.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+
+        <!-- SUPPRIMÉ: TimeEntryActivity (Online-First obsolète) - Remplacée par OfflineTimeEntryActivity -->
+
+        <activity
+            android:name=".activities.TimeEntryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Saisie des heures"/>
+            
+            <activity
+                android:name=".activities.FirstLaunchAuthActivity"
+                android:exported="false"
+                android:theme="@style/Theme.PTMSMobile"
+                android:screenOrientation="portrait" />
+                
+            <activity
+                android:name=".activities.SyncManagementActivity"
+                android:exported="false"
+                android:theme="@style/Theme.PTMSMobile" />
+
+        <!-- SUPPRIMÉ: ReportsActivity (interface basique) - Remplacée par ReportsEnhancedActivity (design amélioré) -->
+
+        <!-- Interface améliorée des rapports avec regroupements jour/semaine/mois -->
+        <activity
+            android:name=".activities.TimeReportsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Mes Rapports" />
+
+        <activity
+            android:name=".activities.UserProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+            
+        <activity
+            android:name=".activities.AppSettingsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+        
+        <activity
+            android:name=".activities.TimelineActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+            
+        <activity
+            android:name=".activities.ConversationsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+            
+        <activity
+            android:name=".activities.ChatUsersActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+            
+        <activity
+            android:name=".activities.ChatActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+
+        <activity
+            android:name=".activities.ChatWebSocketActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Chat (WebSocket)" />
+
+        <activity
+            android:name=".activities.ChatParticipantsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+
+        <activity
+            android:name=".activities.NewConversationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile" />
+
+        <!-- Activité de test des rôles -->
+        <activity
+            android:name=".activities.RoleCompatibilityTestActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Tests de Compatibilité des Rôles" />
+
+        <!-- Activité de diagnostique complète -->
+        <activity
+            android:name=".activities.SystemDiagnosticsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Diagnostique PTMS" />
+
+        <!-- Activité de diagnostique du mode offline -->
+        <activity
+            android:name=".activities.OfflineModeDiagnosticsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Diagnostic Mode Offline" />
+
+        <!-- Activités pour les notes de projet -->
+        <activity
+            android:name=".activities.NotesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Notes" />
+
+        <activity
+            android:name=".activities.NotesListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Toutes les notes" />
+
+        <activity
+            android:name=".activities.ProjectSelectorForNotesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Sélectionner un projet" />
+
+        <!-- SUPPRIMÉ: AddProjectNoteActivity (obsolète - remplacée par CreateNoteUnifiedActivity) -->
+        <!-- Fichier déplacé vers _backup_old_activities/ -->
+
+        <activity
+            android:name=".activities.NotesDiagnosticsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Diagnostic Notes" />
+
+        <activity
+            android:name=".activities.NotesTimelineActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Agenda des Notes"
+            android:parentActivityName=".activities.NotesActivity" />
+
+        <activity
+            android:name=".activities.NoteCategoriesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Catégories de notes"
+            android:parentActivityName=".activities.NotesActivity" />
+
+        <!-- Activité unifiée de création de note (texte, dictée, audio) -->
+        <activity
+            android:name=".activities.NoteEditorActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Nouvelle note"
+            android:parentActivityName=".activities.NotesActivity" />
+
+        <!-- Activité de visualisation de note (lecture/édition/suppression) -->
+        <activity
+            android:name=".activities.NoteDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Détail de la note"
+            android:parentActivityName=".activities.NotesListActivity" />
+
+        <!-- SUPPRIMÉ: NotesActivity (interface simplifiée) - Remplacée par NotesMenuActivity (D002) -->
+        <!-- Fichier supprimé le 2025-10-14 - Interface BottomSheet non utilisée -->
+
+        <!-- Mode Développeur -->
+        <activity
+            android:name=".activities.DeveloperToolsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="🛠️ Mode Développeur" />
+
+        <!-- Recherche avancée -->
+        <activity
+            android:name=".activities.GlobalSearchActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Recherche"
+            android:parentActivityName=".activities.HomeActivity" />
+
+        <!-- Dashboard statistiques avec widgets -->
+        <activity
+            android:name=".activities.StatisticsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Statistiques"
+            android:parentActivityName=".activities.HomeActivity" />
+
+        <!-- Service de synchronisation automatique -->
+        <service
+            android:name=".services.AutoSyncService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- Service du timer de tracking de temps -->
+        <service
+            android:name=".services.TimerService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- Firebase Cloud Messaging Service -->
+        <service
+            android:name=".services.PtmsFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Métadonnées Firebase -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notifications" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimary" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <!-- FileProvider pour partage sécurisé des photos -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- Time Report Detail Activity -->
+        <activity
+            android:name=".activities.TimeReportDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PTMSMobile"
+            android:label="Détails du rapport" />
+
+        <!-- Media Viewer Activity -->
+        <activity
+            android:name=".activities.MediaViewerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="unspecified" />
+
+    </application>
+
+</manifest>
+

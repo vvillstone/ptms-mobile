@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Type Icon -->
+            <TextView
+                android:id="@+id/tv_note_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📝"
+                android:textSize="24sp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tv_note_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Note Title"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <!-- Important Star -->
+            <TextView
+                android:id="@+id/tv_note_important"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⭐"
+                android:textSize="18sp"
+                android:visibility="gone"
+                android:layout_marginEnd="4dp" />
+
+            <!-- Delete Button -->
+            <ImageButton
+                android:id="@+id/btn_delete_note"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_menu_delete"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Supprimer" />
+
+        </LinearLayout>
+
+        <!-- Content (Affichage complet sans limitation) -->
+        <TextView
+            android:id="@+id/tv_note_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Content preview..."
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false" />
+
+        <!-- Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <!-- Author and Date -->
+            <TextView
+                android:id="@+id/tv_note_author"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Author • Date"
+                android:textSize="12sp"
+                android:textColor="#666" />
+
+            <!-- Duration (for audio notes) -->
+            <TextView
+                android:id="@+id/tv_note_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎵 00:00"
+                android:textSize="12sp"
+                android:textColor="#666"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Sync Status Badge -->
+            <TextView
+                android:id="@+id/tv_sync_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📱 Local"
+                android:textSize="11sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/badge_pending"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Upload Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progress_upload"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:progress="0"
+            android:max="100"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
