@@ -67,7 +67,12 @@
       "Bash(gh auth:*)",
       "Bash(unzip:*)",
       "Bash(ls:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(gh run:*)",
+      "Bash(echo:*)",
+      "Bash(./gradlew assembleDebug:*)",
+      "Bash(python3:*)",
+      "Bash(1 unzip -l /tmp/logs.zip)"
     ],
     "deny": [],
     "ask": []
